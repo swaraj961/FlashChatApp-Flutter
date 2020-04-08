@@ -1,36 +1,45 @@
 import 'package:flutter/material.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
+  static String id = 'welcome_screen';
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  child: Image.asset(
-                    'images/logo.png',
-                    height: 60,
+            Padding(
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Image.asset(
+                      'images/logo.png',
+                      height: 70,
+                    ),
                   ),
-                ),
-                Text(
-                  'Flash chat App',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.grey.shade800),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-              ],
+                  Text(
+                    'Flash Chat',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.grey.shade800),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 14),
@@ -39,7 +48,9 @@ class WelcomeScreen extends StatelessWidget {
                 color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(20),
                 child: MaterialButton(
-                  onPressed: null,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'login_page');
+                  },
                   minWidth: 200,
                   height: 40,
                   child: Text(
@@ -62,15 +73,18 @@ class WelcomeScreen extends StatelessWidget {
                 elevation: 15,
                 color: Colors.redAccent,
                 child: MaterialButton(
-                  onPressed: null,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'register_page');
+                  },
                   height: 40,
                   minWidth: 200,
                   child: Text(
                     'Register',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 18),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ),
