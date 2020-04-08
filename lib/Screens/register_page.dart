@@ -18,13 +18,19 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Container(
-                    height: 200,
-                    child: Image.asset('images/logo.png'),
+                  padding: EdgeInsets.only(top: 50),
+                  child: Hero(
+                    tag: 'logo',
+                                      child: Container(
+                      height: 200,
+                      child: Image.asset('images/logo.png'),
+                    ),
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height:5,
             ),
             Text(
               'Register Here!',

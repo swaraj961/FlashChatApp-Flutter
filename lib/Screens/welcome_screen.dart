@@ -21,10 +21,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: Row(
                 children: <Widget>[
-                  Container(
-                    child: Image.asset(
-                      'images/logo.png',
-                      height: 70,
+                  Hero(
+                    tag: 'logo',
+                                      child: Container(
+                      child: Image.asset(
+                        'images/logo.png',
+                        height: 70,
+                      ),
                     ),
                   ),
                   Text(
