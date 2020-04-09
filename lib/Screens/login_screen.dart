@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.only(top: 50),
                   child: Hero(
                     tag: 'logo',
-                                      child: Container(
+                    child: Container(
                       height: 200,
                       child: Image.asset('images/logo.png'),
                     ),

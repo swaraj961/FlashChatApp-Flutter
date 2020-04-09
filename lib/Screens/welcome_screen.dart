@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static String id = 'welcome_screen';
+//  static String id = 'welcome_screen';
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  Animation animation1;
+
+  // Animation animation2;
+  AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        upperBound: 1, vsync: this, duration: Duration(seconds: 1));
+    controller.forward();
+    animation1 = CurvedAnimation(parent: controller, curve: Curves.decelerate);
+// animation2 = ColorTween(begin: Colors.grey, end: Colors.lightBlueAccent).animate(controller)
+    controller.addListener(() {
+      setState(() {});
+      print(animation1.value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.lightBlueAccent, // withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -18,15 +38,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+              padding: EdgeInsets.fromLTRB(8, 6, 15, 0),
               child: Row(
                 children: <Widget>[
                   Hero(
                     tag: 'logo',
-                                      child: Container(
+                    child: Container(
                       child: Image.asset(
                         'images/logo.png',
-                        height: 70,
+                        height: animation1.value * 100,
                       ),
                     ),
                   ),
@@ -39,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         color: Colors.grey.shade800),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 130,
                   ),
                 ],
               ),
