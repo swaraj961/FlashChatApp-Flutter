@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
 //  static String id = 'welcome_screen';
@@ -50,10 +51,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                   ),
-                  Text(
-                    'Flash Chat',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
+                  TypewriterAnimatedTextKit(
+                    text: ['Flash Chat'],
+                    textAlign: TextAlign.start,
+                    speed: Duration(milliseconds: 555),
+                    textStyle: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w800,
                         color: Colors.grey.shade800),
