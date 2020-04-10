@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: EdgeInsets.only(top: 50),
                   child: Hero(
                     tag: 'logo',
-                                      child: Container(
+                    child: Container(
                       height: 200,
                       child: Image.asset('images/logo.png'),
                     ),
@@ -30,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
             SizedBox(
-              height:5,
+              height: 5,
             ),
             Text(
               'Register Here!',
@@ -55,9 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
                         contentPadding: EdgeInsets.all(20)),
                   ),
-                  Divider(
-                    thickness: 2,
-                  ),
+                  Divider(),
                   TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(

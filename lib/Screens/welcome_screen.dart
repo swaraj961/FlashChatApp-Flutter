@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flashchat/rounded_buttons.dart';
 
 class WelcomeScreen extends StatefulWidget {
 //  static String id = 'welcome_screen';
@@ -24,7 +25,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 // animation2 = ColorTween(begin: Colors.grey, end: Colors.lightBlueAccent).animate(controller)
     controller.addListener(() {
       setState(() {});
-      print(animation1.value);
     });
   }
 
@@ -66,54 +66,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 14),
-              child: Material(
-                elevation: 15,
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(20),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'login_page');
-                  },
-                  minWidth: 200,
-                  height: 40,
-                  child: Text(
-                    'Login ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 18),
-                  ),
-                ),
-              ),
+            RoundedButtons(
+              text: 'Login',
+              colour: Colors.blueAccent,
+              onpressed: () {
+                Navigator.pushNamed(context, 'login_page');
+              },
             ),
             SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: Material(
-                borderRadius: BorderRadius.circular(20),
-                elevation: 15,
-                color: Colors.redAccent,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'register_page');
-                  },
-                  height: 40,
-                  minWidth: 200,
-                  child: Text(
-                    'Register',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            RoundedButtons(
+              text: 'Regsiter',
+              colour: Colors.redAccent,
+              onpressed: () {
+                Navigator.pushNamed(context, 'register_page');
+              },
+            )
           ],
         ),
       ),
