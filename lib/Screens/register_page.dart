@@ -10,7 +10,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0XFF08d9d6).withOpacity(0.90),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
               width: 350,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(25)),
-                color: Colors.orange.shade400,
+                color: Colors.orange.shade400.withOpacity(0.90),
               ),
               child: Column(
                 children: <Widget>[
@@ -55,7 +55,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
                         contentPadding: EdgeInsets.all(20)),
                   ),
-                  Divider(),
+                  Divider(
+                    thickness: 0.5,
+                  ),
                   TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(

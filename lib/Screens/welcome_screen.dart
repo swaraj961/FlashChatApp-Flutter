@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flashchat/rounded_buttons.dart';
+import 'package:flashchat/Componets/rounded_buttons.dart';
 
 class WelcomeScreen extends StatefulWidget {
 //  static String id = 'welcome_screen';
@@ -31,7 +31,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent, // withOpacity(controller.value),
+      backgroundColor:
+          Color(0XFF08d9d6).withOpacity(0.90), // withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
