@@ -1,4 +1,5 @@
 import 'package:flashchat/Screens/Welcome_screen.dart';
+import 'package:flashchat/Screens/chat_screen.dart';
 import 'package:flashchat/Screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flashchat/Screens/register_page.dart';
@@ -15,6 +16,7 @@ class FlashChat extends StatelessWidget {
       'welcome_screen' : (context) => WelcomeScreen(),
       'login_page' : (context)=> LoginPage(),
     'register_page': (context) => RegisterPage(),
+    'chat_page': (context) => ChatScreen(),
      },
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(

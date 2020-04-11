@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -6,6 +7,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +53,10 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      email = value;
+                    },
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Enter your Email',
@@ -59,6 +67,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     thickness: 0.5,
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -77,8 +88,18 @@ class _RegisterPageState extends State<RegisterPage> {
               color: Colors.blueAccent,
               borderRadius: BorderRadius.circular(20),
               child: MaterialButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'login_page');
+                onPressed: () async {
+                  // print(email);
+                  // print(password);
+                  //
+                  try {
+                    final newuser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newuser != null)
+                      Navigator.pushNamed(context, 'chat_page');
+                  } catch (e) {
+                    print(e);
+                  }
                 },
                 minWidth: 150,
                 height: 10,

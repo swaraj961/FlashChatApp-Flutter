@@ -45,7 +45,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
+                      
                         border: InputBorder.none,
                         hintText: 'Enter your Email',
                         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
