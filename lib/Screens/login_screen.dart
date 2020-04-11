@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -6,6 +7,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String email;
+  String password;
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +49,11 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                     keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      
                         border: InputBorder.none,
                         hintText: 'Enter your Email',
                         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
@@ -57,6 +63,9 @@ class _LoginPageState extends State<LoginPage> {
                     thickness: 0.5,
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -75,8 +84,17 @@ class _LoginPageState extends State<LoginPage> {
               color: Color(0xFF00e676),
               borderRadius: BorderRadius.circular(20),
               child: MaterialButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'login_page');
+                onPressed: () async{
+                 
+                 try{
+        
+                  final newuser = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                  if(newuser!=null)
+                  Navigator.pushNamed(context, 'chat_page');
+                 }
+                  catch (e){
+
+                 }
                 },
                 minWidth: 150,
                 height: 10,
