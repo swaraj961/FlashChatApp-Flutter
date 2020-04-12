@@ -1,6 +1,8 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flashchat/Componets/rounded_buttons.dart';
+import 'package:flare_dart/actor.dart';
 
 class WelcomeScreen extends StatefulWidget {
 //  static String id = 'welcome_screen';
@@ -83,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               onpressed: () {
                 Navigator.pushNamed(context, 'register_page');
               },
-            )
+            ),
           ],
         ),
       ),

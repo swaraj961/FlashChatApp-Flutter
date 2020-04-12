@@ -13,6 +13,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _firestore = Firestore.instance;
   FirebaseUser loginUser;
   String messagetext = '';
+  String userid;
 
   @override
   void initState() {
@@ -24,7 +25,8 @@ class _ChatScreenState extends State<ChatScreen> {
     try {
       final user = await _auth.currentUser();
       if (loginUser != null) loginUser = user;
-      print(user.email);
+      userid = user.email;
+      print(userid);
     } catch (e) {
       print(e);
     }
@@ -70,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       _firestore
                           .collection('messages')
-                          .add({'sender': 'email', 'text': messagetext});
+                          .add({'sender': userid, 'text': messagetext});
                     },
                     child: Text(
                       'Send',
