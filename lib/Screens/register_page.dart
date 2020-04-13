@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: Color(0XFF08d9d6).withOpacity(0.90),
+      backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
       body: ModalProgressHUD(
         inAsyncCall: showspinner,
         child: SafeArea(
@@ -38,11 +38,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
               SizedBox(
-                height: 5,
+                height: 15,
               ),
               Text(
-                'Register Here!',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                'Register Here !',
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                    color: Colors.white70),
               ),
               SizedBox(
                 height: 40,
@@ -91,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Material(
                 elevation: 15,
-                color: Colors.blueAccent,
+                color: Colors.redAccent.withOpacity(0.95),
                 borderRadius: BorderRadius.circular(20),
                 child: MaterialButton(
                   onPressed: () async {

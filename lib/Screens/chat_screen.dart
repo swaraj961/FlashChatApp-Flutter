@@ -67,7 +67,7 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ],
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
       ),
       body: SafeArea(
         child: Column(
@@ -123,7 +123,7 @@ class MessageStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
             ),
           );
         }
@@ -170,7 +170,7 @@ class MessageBubble extends StatelessWidget {
         Material(
           borderRadius: BorderRadius.circular(20),
           elevation: 10,
-          color: Colors.lightBlueAccent,
+          color: Color(0XFF4dd0e1).withOpacity(0.90),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Text('$message'),

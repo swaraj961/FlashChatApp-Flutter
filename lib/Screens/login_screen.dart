@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomPadding: false,
-        backgroundColor: Color(0XFF08d9d6).withOpacity(0.90),
+        backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
         body: ModalProgressHUD(
           inAsyncCall: showspinner,
           child: SafeArea(
@@ -36,9 +36,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 15,
+              ),
               Text(
                 'Welcome Back !',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                    color: Colors.white70),
               ),
               SizedBox(
                 height: 40,

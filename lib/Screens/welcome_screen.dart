@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flashchat/Componets/rounded_buttons.dart';
 
-
 class WelcomeScreen extends StatefulWidget {
 //  static String id = 'welcome_screen';
   @override
@@ -33,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
-          Color(0XFF08d9d6).withOpacity(0.90), // withOpacity(controller.value),
+          Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -71,6 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             RoundedButtons(
               text: 'Login',
               colour: Colors.blueAccent,
+              //Color(0xFF00e676),
               onpressed: () {
                 Navigator.pushNamed(context, 'login_page');
               },
