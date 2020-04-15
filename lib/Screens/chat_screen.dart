@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = Firestore.instance;
+ FirebaseUser loginUser;
+ final _auth = FirebaseAuth.instance;
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -11,9 +13,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final _auth = FirebaseAuth.instance;
+  
   final textEditingController = TextEditingController();
-  FirebaseUser loginUser;
+ 
   String messagetext = '';
   String userid;
 
@@ -113,8 +115,11 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessageStream extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+  
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore
           .collection('messages')
@@ -132,9 +137,12 @@ class MessageStream extends StatelessWidget {
         for (var msg in messages) {
           final messagetxt = msg.data['text'];
           final messagesender = msg.data['sender'];
+          // final  currentuser = loginUser.email;
+          // print('current is $currentuser');
           final messagebubble = MessageBubble(
-            message: messagetxt,
+            message: messagetxt, 
             sender: messagesender,
+           // isme: currentuser == messagesender ? false: true,
           );
           messagebubbles.add(messagebubble);
         }
@@ -151,8 +159,9 @@ class MessageStream extends StatelessWidget {
 
 class MessageBubble extends StatelessWidget {
   final String message;
+  final bool isme ;
   final String sender;
-  MessageBubble({this.message, this.sender});
+  MessageBubble({this.message, this.sender, this.isme = true});
 
   @override
   Widget build(BuildContext context) {
@@ -168,9 +177,9 @@ class MessageBubble extends StatelessWidget {
           height: 4,
         ),
         Material(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(30),bottomRight: Radius.circular(30),bottomLeft: Radius.circular(30)),
           elevation: 10,
-          color: Color(0XFF4dd0e1).withOpacity(0.90),
+          color: isme ?  Color(0XFF4dd0e1).withOpacity(0.90) : Colors.white,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Text('$message'),
