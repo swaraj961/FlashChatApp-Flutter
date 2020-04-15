@@ -28,8 +28,11 @@ class _ChatScreenState extends State<ChatScreen> {
   void getcurrentuser() async {
     try {
       final user = await _auth.currentUser();
-      if (loginUser != null) loginUser = user;
+      if (user!= null) 
+      loginUser = user;
       userid = user.email;
+      print(loginUser.email);
+
       print(userid);
     } catch (e) {
       print(e);
@@ -62,10 +65,10 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
             icon: Icon(Icons.power_settings_new),
             onPressed: () {
-              messagestream();
-//              _auth.signOut();
-//              Navigator.pop(context);
-//              getmessages();
+            
+             _auth.signOut();
+             Navigator.pop(context);
+            
             },
           ),
         ],
@@ -137,12 +140,12 @@ class MessageStream extends StatelessWidget {
         for (var msg in messages) {
           final messagetxt = msg.data['text'];
           final messagesender = msg.data['sender'];
-          // final  currentuser = loginUser.email;
-          // print('current is $currentuser');
+          final  currentuser = loginUser.email;
+          print('current is $currentuser');
           final messagebubble = MessageBubble(
             message: messagetxt, 
             sender: messagesender,
-           // isme: currentuser == messagesender ? false: true,
+           isme: currentuser == messagesender ? false: true,
           );
           messagebubbles.add(messagebubble);
         }
