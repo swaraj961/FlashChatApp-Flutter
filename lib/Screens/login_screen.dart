@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,7 +12,14 @@ class _LoginPageState extends State<LoginPage> {
   bool showspinner = false;
   String email;
   String password;
+  bool visibletext;
   FirebaseAuth _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    super.initState();
+    visibletext = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +72,12 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
                           border: InputBorder.none,
-                          hintText: 'Enter your Email',
+                          hintText: '\tEnter your Email',
                           hintStyle:
                               TextStyle(fontSize: 16, color: Colors.white),
                           contentPadding: EdgeInsets.all(20)),
@@ -77,8 +89,16 @@ class _LoginPageState extends State<LoginPage> {
                       onChanged: (value) {
                         password = value;
                       },
-                      obscureText: true,
+                      obscureText: visibletext,
                       decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  visibletext = false;
+                                });
+                              },
+                              icon: Icon(Icons.visibility)),
+                          prefixIcon: Icon(Icons.lock),
                           border: InputBorder.none,
                           hintText: "Password",
                           hintStyle:

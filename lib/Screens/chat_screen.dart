@@ -73,8 +73,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       onPressed: () {
                         setState(() {
-                          _auth.signOut();
-                          Navigator.pushNamed(context, 'login_page');
+                         _auth.signOut();
+                          Navigator.pushNamed(context, 'welcome_screen');
+
                         });
                       },
                       color: Color.fromRGBO(0, 179, 134, 1.0),
@@ -98,9 +99,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 ).show();
               });
 
-              //
-              // Navigator.pop(context);
-            },
+                   
+              },
           ),
         ],
         backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),

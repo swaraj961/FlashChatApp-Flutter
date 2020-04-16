@@ -8,10 +8,17 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool visibletext;
   final _auth = FirebaseAuth.instance;
   bool showspinner = false;
   String email;
   String password;
+  @override
+  void initState() {
+    super.initState();
+    visibletext = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +72,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         email = value;
                       },
                       decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
                           border: InputBorder.none,
                           hintText: 'Enter your Email',
                           hintStyle:
@@ -80,8 +91,16 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  visibletext = false;
+                                });
+                              },
+                              icon: Icon(Icons.visibility)),
+                          prefixIcon: Icon(Icons.lock),
                           border: InputBorder.none,
-                          hintText: "Password",
+                          hintText: "Create a New Password",
                           hintStyle:
                               TextStyle(fontSize: 16, color: Colors.white),
                           contentPadding: EdgeInsets.all(20)),
@@ -105,10 +124,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       final newuser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
- Navigator.pushNamed(context, 'login_page');  
-                      if (newuser != null){
- Navigator.pushNamed(context, 'chat_page');
-                      } 
+                      Navigator.pushNamed(context, 'login_page');
+                      if (newuser != null) {
+                        Navigator.pushNamed(context, 'chat_page');
+                      }
                       setState(() {
                         showspinner = false;
                       });
