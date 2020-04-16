@@ -18,7 +18,8 @@ class FlashChat extends StatelessWidget {
     'register_page': (context) => RegisterPage(),
     'chat_page': (context) => ChatScreen(),
      },
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Color(0xFF374046),
         textTheme: TextTheme(
           body1: TextStyle(color: Colors.white),
         ),
