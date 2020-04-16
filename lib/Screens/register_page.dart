@@ -8,6 +8,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final formkey = GlobalKey<FormState>();
+
   bool visibletext;
   final _auth = FirebaseAuth.instance;
   bool showspinner = false;
@@ -64,48 +66,69 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: BorderRadius.all(Radius.circular(25)),
                   color: Colors.orange.shade400.withOpacity(0.85),
                 ),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: Colors.white,
-                          ),
-                          border: InputBorder.none,
-                          hintText: 'Enter your Email',
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.white),
-                          contentPadding: EdgeInsets.all(20)),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                    ),
-                    TextFormField(
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  visibletext = false;
-                                });
-                              },
-                              icon: Icon(Icons.visibility)),
-                          prefixIcon: Icon(Icons.lock),
-                          border: InputBorder.none,
-                          hintText: "Create a New Password",
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.white),
-                          contentPadding: EdgeInsets.all(20)),
-                    ),
-                  ],
+                child: Form(
+                  key: formkey,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          onSaved: (value) {
+                            email = value;
+                          },
+                          validator: (value) {
+                            if (!value.contains('@gmail.com')) {
+                              return 'Enter a valid Email';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.white,
+                              ),
+                              border: InputBorder.none,
+                              hintText: 'Enter your Email',
+                              hintStyle:
+                                  TextStyle(fontSize: 16, color: Colors.white),
+                              contentPadding: EdgeInsets.all(20)),
+                        ),
+                      ),
+                      Divider(
+                        thickness: 0.5,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          obscureText: visibletext,
+                          onChanged: (value) {
+                            password = value;
+                          },
+                          validator: (value) {
+                            if (value.length < 6) {
+                              return 'Password must be atleast 6 characters';
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      visibletext = false;
+                                    });
+                                  },
+                                  icon: Icon(Icons.visibility)),
+                              prefixIcon: Icon(Icons.lock),
+                              border: InputBorder.none,
+                              hintText: "Create a New Password",
+                              hintStyle:
+                                  TextStyle(fontSize: 16, color: Colors.white),
+                              contentPadding: EdgeInsets.all(20)),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -118,7 +141,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: MaterialButton(
                   onPressed: () async {
                     setState(() {
-                      showspinner = true;
+                      if (formkey.currentState.validate() == true) {
+                        showspinner = true;
+                      }
                     });
                     try {
                       final newuser =
