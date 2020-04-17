@@ -73,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Expanded(
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          onSaved: (value) {
+                          onChanged: (value) {
                             email = value;
                           },
                           validator: (value) {
@@ -146,13 +146,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     });
                     try {
-                      final newuser =
-                          await _auth.createUserWithEmailAndPassword(
+                      final newuser = await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
                       Navigator.pushNamed(context, 'login_page');
                       if (newuser != null) {
                         Navigator.pushNamed(context, 'chat_page');
-                      }
+                      } 
                       setState(() {
                         showspinner = false;
                       });

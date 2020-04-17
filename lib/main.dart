@@ -10,6 +10,7 @@ class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       initialRoute: 'welcome_screen',
      routes: 
      {
@@ -22,6 +23,7 @@ class FlashChat extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF374046),
         textTheme: TextTheme(
           body1: TextStyle(color: Colors.white),
+          
         ),
       ),
       home:WelcomeScreen(),

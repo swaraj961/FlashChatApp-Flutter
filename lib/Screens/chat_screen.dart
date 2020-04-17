@@ -3,10 +3,13 @@ import 'package:flashchat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:random_color/random_color.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loginUser;
 final _auth = FirebaseAuth.instance;
+RandomColor randomColor = RandomColor();
+Color color = randomColor.randomColor();
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -53,7 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       // backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('⚡️Chat'),
+        title: Text('⚡️Group Chat'),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -73,9 +76,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       onPressed: () {
                         setState(() {
-                         _auth.signOut();
+                          _auth.signOut();
                           Navigator.pushNamed(context, 'welcome_screen');
-
                         });
                       },
                       color: Color.fromRGBO(0, 179, 134, 1.0),
@@ -98,9 +100,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ],
                 ).show();
               });
-
-                   
-              },
+            },
           ),
         ],
         backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
@@ -178,10 +178,13 @@ class MessageStream extends StatelessWidget {
           messagebubbles.add(messagebubble);
         }
         return Expanded(
-          child: ListView(
+          child: ListView.builder(
+            itemCount: messages.length,
+            itemBuilder: (_, int index) => messagebubbles[index],
+
             reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            children: messagebubbles,
+            // children: messagebubbles,
           ),
         );
       },
@@ -221,7 +224,7 @@ class MessageBubble extends StatelessWidget {
                     bottomRight: Radius.circular(30),
                     bottomLeft: Radius.circular(30)),
             elevation: 10,
-            color: isme ? Color(0XFF4dd0e1).withOpacity(0.90) : Colors.red,
+            color: isme ? Color(0XFF4dd0e1).withOpacity(0.90) : color,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Text('$message'),
