@@ -1,16 +1,24 @@
-# flashchat
+![star](https://img.shields.io/github/stars/swaraj961/FlashChatApp-Flutter) ![issues](https://img.shields.io/github/issues/swaraj961/FlashChatApp-Flutter) ![fork](https://img.shields.io/github/forks/swaraj961/FlashChatApp-Flutter) ![love](https://img.shields.io/badge/open%20%20source-%E2%9D%A4-red) ![flutter](https://img.shields.io/badge/Flutter-Framework-blue) ![dev](https://img.shields.io/badge/developed%20by%20-swaraj%20routray-green)
 
-A new Flutter project.
+# flashchat⚡
+![Icon](https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/ic_launcher.png)
 
-## Getting Started
+- Group chat with friends 
+-Firebase auth App
+-Material design App
 
-This project is a starting point for a Flutter application.
+## Things to do
+- [ ] SplashScreen 
+- [x] GroupChat
+- [ ] Copy chat text and delete
+- [ ] Allow image/gif from keyboard
+- [ ] Push Notifications
+- [ ] User info Avatar
+- [ ] last seen and timestamp
+- [x] domin email validators 
+- [ ] More animation 
 
-A few resources to get you started if this is your first Flutter project:
+## Download apk 
+release 1 :
+- https://www.shorturl.at/etwR2
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
