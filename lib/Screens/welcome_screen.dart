@@ -32,8 +32,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
+      // backgroundColor:
+      //     Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -60,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     textStyle: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w800,
-                        color: Colors.grey.shade800),
+                        color: Colors.white),
                   ),
                   SizedBox(
                     height: 130,

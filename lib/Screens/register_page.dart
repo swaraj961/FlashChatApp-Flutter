@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
+      // backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
       body: ModalProgressHUD(
         inAsyncCall: showspinner,
         child: SafeArea(
