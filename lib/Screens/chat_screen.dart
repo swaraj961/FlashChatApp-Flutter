@@ -103,7 +103,9 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ],
-        backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
+        backgroundColor:  Color(0xFF47535E),
+        elevation:25,
+        // backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
       ),
       body: SafeArea(
         child: Column(

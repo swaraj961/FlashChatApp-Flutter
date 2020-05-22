@@ -36,57 +36,59 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       //     Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(8, 6, 15, 0),
-              child: Row(
-                children: <Widget>[
-                  Hero(
-                    tag: 'logo',
-                    child: Container(
-                      child: Image.asset(
-                        'images/logo.png',
-                        height: animation1.value * 100,
+        child: SafeArea(
+                  child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(8, 6, 15, 0),
+                child: Row(
+                  children: <Widget>[
+                    Hero(
+                      tag: 'logo',
+                      child: Container(
+                        child: Image.asset(
+                          'images/logo.png',
+                          height: animation1.value * 100,
+                        ),
                       ),
                     ),
-                  ),
-                  TypewriterAnimatedTextKit(
-                    text: ['Flash Chat'],
-                    textAlign: TextAlign.start,
-                    speed: Duration(milliseconds: 555),
-                    textStyle: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 130,
-                  ),
-                ],
+                    TypewriterAnimatedTextKit(
+                      text: ['Flash Chat'],
+                      textAlign: TextAlign.start,
+                      speed: Duration(milliseconds: 555),
+                      textStyle: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    ),
+                    SizedBox(
+                      height: 130,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            RoundedButtons(
-              text: 'Login',
-              colour: Colors.blueAccent,
-              //Color(0xFF00e676),
-              onpressed: () {
-                Navigator.pushNamed(context, 'login_page');
-              },
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            RoundedButtons(
-              text: 'Regsiter',
-              colour: Colors.redAccent,
-              onpressed: () {
-                Navigator.pushNamed(context, 'register_page');
-              },
-            ),
-          ],
+              RoundedButtons(
+                text: 'Login',
+                colour: Colors.blueAccent,
+                //Color(0xFF00e676),
+                onpressed: () {
+                  Navigator.pushNamed(context, 'login_page');
+                },
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              RoundedButtons(
+                text: 'Regsiter',
+                colour: Colors.redAccent,
+                onpressed: () {
+                  Navigator.pushNamed(context, 'register_page');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
