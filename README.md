@@ -4,9 +4,9 @@
 
 
 
-## Tasks and Features
-- Group chat with friends 
-- Material design App
+## Features
+* Group chat with friends 
+* Material design App
 * Improve the UI
 * Implementing the App with Features
 * Login Page using Email
@@ -24,7 +24,7 @@
 - [ ] More animation 
 
 # App UI 
-![Finished App](https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/flash.gif)
+<!-- ![Finished App](https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/flash.gif) -->
 
 ## Download apk 
 release 1 :

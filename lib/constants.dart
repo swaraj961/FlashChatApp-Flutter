@@ -13,12 +13,15 @@ const kMessageTextFieldDecoration = InputDecoration(
   hintStyle: TextStyle(color: Colors.white),
  
   border: InputBorder.none,
+  
  
 );
 
 const kMessageContainerDecoration = BoxDecoration(
   border: Border(
-    top: BorderSide(color: Color(0XFF4dd0e1), width: 2.0),
+    // top: BorderSide(color: Color(0XFF4dd0e1), width: 2.0),
+    
   
   ),
+ 
 );

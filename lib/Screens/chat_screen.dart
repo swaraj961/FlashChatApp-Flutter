@@ -103,8 +103,8 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ],
-        backgroundColor:  Color(0xFF47535E),
-        elevation:25,
+        backgroundColor: Color(0xFF47535E),
+        elevation: 25,
         // backgroundColor: Color(0XFF4dd0e1).withOpacity(0.90),
       ),
       body: SafeArea(
@@ -113,35 +113,44 @@ class _ChatScreenState extends State<ChatScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             MessageStream(),
-            Container(
-              decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                        controller: textEditingController,
-                        onChanged: (value) {
-                          setState(() {
-                            messagetext = value;
-                          });
-                        },
-                        decoration: kMessageTextFieldDecoration),
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      textEditingController.clear();
-                      _firestore
-                          .collection('messages')
-                          .add({'sender': userid, 'text': messagetext});
-                    },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.blueGrey,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                          controller: textEditingController,
+                          onChanged: (value) {
+                            setState(() {
+                              messagetext = value;
+                            });
+                          },
+                          decoration: kMessageTextFieldDecoration),
                     ),
-                  ),
-                ],
+                    FlatButton(
+                      onPressed: () {
+                        textEditingController.clear();
+                        _firestore
+                            .collection('messages')
+                            .add({'sender': userid, 'text': messagetext});
+                      },
+                      child: Icon(
+                        Icons.send,
+                        color: Color(0XFF4dd0e1),
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ),
+            ),
+            SizedBox(
+              height: 5,
             ),
           ],
         ),
