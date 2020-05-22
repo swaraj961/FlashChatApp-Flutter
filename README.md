@@ -54,7 +54,7 @@ release 1 :
 
   ##### Clone the repository
 ```bash
-git clone https://github.com/ishandeveloper/Chatter-App.git
+git clone https://github.com/swaraj961/FlashChatApp-Flutter.git
 ```
   ##### Move to the desired folder
 ```bash
@@ -76,12 +76,12 @@ flutter run
 
 ### How to make a Pull Request:
 
-**1.** Fork [this](https://github.com/ishandeveloper/Chatter-App) repository.
+**1.** Fork [this](https://github.com/swaraj961/FlashChatApp-Flutter) repository.
 
 **2.** Clone the forked repository.
 
 ```terminal
-git clone https://github.com/<your-github-username>/Chatter-App
+git clone https://github.com/<your-github-username>/FlashChatApp-Flutter
 ```
 
 **3.** Navigate to the project directory.
