@@ -25,10 +25,12 @@
 
 # App UI 
 <!-- ![Finished App](https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/flash.gif) -->
+<img src="https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/ss2.jpg" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/ss1.jpg" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/swaraj961/FlashChatApp-Flutter/blob/master/images/ss5.jpg" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Download apk 
 release 1 :
 - https://www.shorturl.at/etwR2
+
 
 ##### Made with ♥ by <a href="https://github.com/Swaraj961">swaraj routray</a>
 
