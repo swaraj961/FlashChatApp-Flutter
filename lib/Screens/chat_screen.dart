@@ -135,9 +135,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     FlatButton(
                       onPressed: () {
                         textEditingController.clear();
-                        _firestore
-                            .collection('messages')
-                            .add({'sender': userid, 'text': messagetext});
+                        _firestore.collection('messages').add({
+                          'sender': userid,
+                          'text': messagetext,
+                          'time': FieldValue.serverTimestamp(),
+                        });
                       },
                       child: Icon(
                         Icons.send,
@@ -163,7 +165,7 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore.collection('messages').orderBy('time').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
