@@ -1,3 +1,4 @@
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flashchat/Screens/Welcome_screen.dart';
 import 'package:flashchat/Screens/chat_screen.dart';
 import 'package:flashchat/Screens/login_screen.dart';
@@ -7,6 +8,18 @@ import 'package:flashchat/Screens/register_page.dart';
 void main() => runApp(FlashChat());
 
 class FlashChat extends StatelessWidget {
+//  final _auth = FirebaseAuth.instance;
+
+//  String initialPage(String c, String w) {
+//    try {
+//      String screen = _auth.currentUser() == null ? w : c;
+//      print(_auth.currentUser());
+//      return screen;
+//    } catch (e) {
+//      return w;
+//    }
+//  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +37,6 @@ class FlashChat extends StatelessWidget {
           bodyText1: TextStyle(color: Colors.white),
         ),
       ),
-      home: WelcomeScreen(),
     );
   }
 }
