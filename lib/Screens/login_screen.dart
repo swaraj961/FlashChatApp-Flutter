@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flashchat/Componets/rounded_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -150,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                         final newuser = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (newuser != null)
-                          Navigator.pushNamed(context, 'chat_page');
+                          Navigator.pushReplacementNamed(context, 'chat_page');
                         setState(() {
                           showspinner = false;
                         });

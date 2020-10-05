@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flashchat/Componets/rounded_buttons.dart';
@@ -10,6 +11,8 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
+  final _auth = FirebaseAuth.instance;
+
   Animation animation1;
 
   // Animation animation2;
@@ -28,8 +31,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     });
   }
 
+  void getCurrentUser() async {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      Navigator.pushNamed(context, 'chat_page');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    getCurrentUser();
     return Scaffold(
       // backgroundColor:
       //     Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
@@ -46,12 +57,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 padding: EdgeInsets.fromLTRB(8, 6, 15, 0),
                 child: Row(
                   children: <Widget>[
-                    Hero(
-                      tag: 'logo',
-                      child: Container(
-                        child: Image.asset(
-                          'images/logo.png',
-                          height: animation1.value * 100,
+                    Flexible(
+                      child: Hero(
+                        tag: 'logo',
+                        child: Container(
+                          child: Image.asset(
+                            'images/logo.png',
+                            height: animation1.value * 70,
+                          ),
                         ),
                       ),
                     ),

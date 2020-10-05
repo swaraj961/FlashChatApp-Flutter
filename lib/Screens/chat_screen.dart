@@ -56,6 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       // backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('⚡️Group Chat'),
         centerTitle: true,
         actions: <Widget>[
@@ -135,9 +136,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     FlatButton(
                       onPressed: () {
                         textEditingController.clear();
-                        _firestore
-                            .collection('messages')
-                            .add({'sender': userid, 'text': messagetext});
+                        _firestore.collection('messages').add({
+                          'sender': userid,
+                          'text': messagetext,
+                          'time': FieldValue.serverTimestamp(),
+                        });
                       },
                       child: Icon(
                         Icons.send,
@@ -163,7 +166,7 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore.collection('messages').orderBy('time').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -206,16 +209,23 @@ class MessageBubble extends StatelessWidget {
   final String sender;
   MessageBubble({this.message, this.sender, this.isme});
 
+  String splitMailAddress(String mailID) {
+    var name = mailID.split('@');
+    return name[0];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: isme
+          ? EdgeInsets.fromLTRB(100, 8, 8, 8)
+          : EdgeInsets.fromLTRB(8, 8, 100, 8),
       child: Column(
         crossAxisAlignment:
             isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            '$sender',
+            splitMailAddress(sender),
             style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           SizedBox(
@@ -234,7 +244,7 @@ class MessageBubble extends StatelessWidget {
             elevation: 10,
             color: isme ? Color(0XFF4dd0e1).withOpacity(0.90) : color,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Text('$message'),
             ),
           ),

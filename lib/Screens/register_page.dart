@@ -77,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             email = value;
                           },
                           validator: (value) {
-                            if (!value.contains('@gmail.com')) {
+                            if (!value.contains('@')) {
                               return 'Enter a valid Email';
                             } else {
                               return null;
@@ -146,12 +146,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     });
                     try {
-                      final newuser = await _auth.createUserWithEmailAndPassword(
+                      final newuser =
+                          await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
-                      Navigator.pushNamed(context, 'login_page');
+                      Navigator.pushReplacementNamed(context, 'login_page');
                       if (newuser != null) {
-                        Navigator.pushNamed(context, 'chat_page');
-                      } 
+                        Navigator.pushReplacementNamed(context, 'chat_page');
+                      }
                       setState(() {
                         showspinner = false;
                       });
